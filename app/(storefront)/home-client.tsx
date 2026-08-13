@@ -97,8 +97,8 @@ export function HomeUI({
     ASSETS.img2,
     ASSETS.img6,
     ASSETS.img4,
-    ASSETS.img17,
-    ASSETS.img16,
+    ASSETS.img13,
+    ASSETS.img14,
   ];
 
   /* ── Map DB categories OR use Euphoria defaults ── */
