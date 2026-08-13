@@ -1,0 +1,35 @@
+name: Setup Database Tables
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-db:
+    name: Create Database Tables on Hostinger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: "mysql://u713214996_bibaz10:Bibaz2010%40@srv1951.hstgr.io:3306/u713214996_bibaz"
+
+      - name: Push database schema (create all tables)
+        run: npx prisma db push --accept-data-loss
+        env:
+          DATABASE_URL: "mysql://u713214996_bibaz10:Bibaz2010%40@srv1951.hstgr.io:3306/u713214996_bibaz"
+
+      - name: Confirm tables created
+        run: echo "✅ All database tables created successfully!"

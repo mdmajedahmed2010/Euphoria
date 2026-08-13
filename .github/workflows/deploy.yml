@@ -1,0 +1,89 @@
+# ═══════════════════════════════════════════════════
+# BIBAZ — Deploy Pipeline (SOP §৮B, §৮.৫)
+# Builds on GitHub Actions (7GB RAM) → Deploys to Hostinger via SSH
+# Rule: NEVER build on Hostinger server. Hostinger only runs: node server.js
+# ═══════════════════════════════════════════════════
+
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy to Hostinger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install all dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Push Database Schema (create tables if not exist)
+        run: npx prisma db push --accept-data-loss
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Build application (GitHub Actions — 7GB RAM)
+        run: npm run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
+          AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+          NODE_ENV: production
+
+      - name: Clean old build artifacts on Hostinger
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          username: ${{ secrets.HOSTINGER_SSH_USER }}
+          password: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+          port: 65002
+          script: |
+            cd /home/$USER/domains/majedahmed.space/nodejs
+            rm -rf .next
+            echo "✅ Cleaned old .next build artifacts"
+
+      - name: Copy built files to Hostinger via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          username: ${{ secrets.HOSTINGER_SSH_USER }}
+          password: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+          port: 65002
+          source: ".next/,public/,server.js,package.json,package-lock.json,next.config.ts,prisma/,proxy.ts"
+          target: "/home/${{ secrets.HOSTINGER_SSH_USER }}/domains/majedahmed.space/nodejs"
+          strip_components: 0
+          overwrite: true
+
+      - name: Install production deps & restart on Hostinger
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          username: ${{ secrets.HOSTINGER_SSH_USER }}
+          password: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+          port: 65002
+          script: |
+            cd /home/$USER/domains/majedahmed.space/nodejs
+            npm ci --omit=dev --ignore-scripts
+            npx prisma generate
+            mkdir -p tmp
+            touch tmp/restart.txt
+            echo "✅ Deploy complete — Hostinger Passenger process restart triggered"
+
