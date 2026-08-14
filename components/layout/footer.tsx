@@ -7,6 +7,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
 
 const shopLinks = [
