@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X } from "lucide-react";
 
 export function FloatingChat({ 
-  phoneNumber = "8801765290018",
-  messengerUrl = "https://m.me/sewinstylebyfarzana1"
+  phoneNumber = "+8801741875914",
+  messengerUrl = "https://m.me/Euphoria2222"
 }: { 
   phoneNumber?: string;
   messengerUrl?: string;

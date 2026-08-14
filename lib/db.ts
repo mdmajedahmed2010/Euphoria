@@ -64,7 +64,7 @@ function createDummyPrisma() {
             if (prop === "siteSetting" && modelProp === "findMany") {
               return [
                 { key: "store_name", value: "Euphoria" },
-                { key: "store_phone", value: "+880 1792-635996" },
+                { key: "store_phone", value: "+880 1741-875914" },
                 { key: "store_email", value: "info@sewinstylebyfarzana1.com" },
                 { key: "store_address", value: "Shop 2/73, Eastern Mollika Shopping Complex, Elephant Road, Dhaka, Bangladesh" },
                 { key: "shipping_dhaka", value: "80" },

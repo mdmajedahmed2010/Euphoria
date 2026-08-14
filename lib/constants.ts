@@ -79,7 +79,7 @@ export const BUSINESS = {
   NAME: "Euphoria",
   NAME_BN: "ইউফোরিয়া",
   TAGLINE: "Dressing well is a form of good manners.",
-  PHONE: "01903-888804",
+  PHONE: "+880 1741-875914",
   EMAIL: "info@euphoriabd.com",
   ADDRESS: "Mirpur, Dhaka, Bangladesh",
   FACEBOOK: "https://www.facebook.com/Euphoria2222",

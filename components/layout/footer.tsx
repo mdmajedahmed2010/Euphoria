@@ -156,14 +156,17 @@ export function Footer({ settings = {} }: { settings?: Record<string, any> }) {
               যোগাযোগ করুন
             </h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground font-medium">
-              <li>
-                <a
-                  href={`tel:${settings.store_phone || "+8801903-888804"}`}
-                  className="hover:text-primary transition-colors"
-                >
-                  {settings.store_phone || "+8801903-888804"}
-                </a>
-              </li>
+                <li className="flex items-center gap-2 text-sm text-muted-foreground group">
+                  <span className="flex items-center justify-center size-8 rounded-full bg-neutral-100 group-hover:bg-foreground group-hover:text-background transition-colors shrink-0">
+                    <Phone className="h-3.5 w-3.5" />
+                  </span>
+                  <a 
+                    href={`tel:${settings.store_phone || "+8801741-875914"}`}
+                    className="hover:text-foreground transition-colors"
+                  >
+                    {settings.store_phone || "+880 1741-875914"}
+                  </a>
+                </li>
               <li>
                 <a
                   href={`mailto:${settings.store_email || "info@euphoria.com"}`}
