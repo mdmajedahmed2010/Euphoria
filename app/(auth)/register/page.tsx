@@ -14,7 +14,7 @@ import { Loader2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Create Account",
-  description: "Create your Sitara By Abida account for a better shopping experience.",
+  description: "Create your Euphoria account for a better shopping experience.",
 };
 
 export default function RegisterPage() {
@@ -24,11 +24,11 @@ export default function RegisterPage() {
         {/* Header */}
         <div className="text-center space-y-2">
           <Link href="/" className="inline-block text-2xl font-extrabold tracking-wide uppercase text-[#0a0a0a] font-heading">
-            Sitara By Abida
+            Euphoria
           </Link>
           <h1 className="text-xl font-semibold">Create your account</h1>
           <p className="text-sm text-muted-foreground">
-            Join Sitara By Abida for a personalized shopping experience
+            Join Euphoria for a personalized shopping experience
           </p>
         </div>
 

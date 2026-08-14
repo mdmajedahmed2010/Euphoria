@@ -1,5 +1,5 @@
 /**
- * Sitara By Abida — All Categories Page
+ * Euphoria — All Categories Page
  * Route: /categories
  */
 
@@ -13,9 +13,9 @@ import { CATEGORIES } from "@/lib/demo-data";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "All Categories — Sitara By Abida",
+  title: "All Categories — Euphoria",
   description:
-    "Browse all Sitara By Abida Pakistani clothing categories — Luxury Organza Suits, Chiffon Embroidered, Lawn 3-Piece, Festive & Bridal Collections.",
+    "Browse all Euphoria Pakistani clothing categories — Luxury Organza Suits, Chiffon Embroidered, Lawn 3-Piece, Festive & Bridal Collections.",
 };
 
 type CategoryItem = {
@@ -61,7 +61,7 @@ export default async function CategoriesPage() {
         {/* Luxury Header */}
         <div className="mt-10 mb-14 text-center">
           <span className="inline-block px-3.5 py-1 rounded-full border border-[#0a0a0a]/50 bg-[#0a0a0a]/5 text-[#0a0a0a] text-[10px] uppercase tracking-[0.28em] font-bold mb-4">
-            ✦ Sitara By Abida EXCLUSIVE ✦
+            ✦ Euphoria EXCLUSIVE ✦
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a0a0a] font-serif">
             All Categories

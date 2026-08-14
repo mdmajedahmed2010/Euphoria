@@ -12,7 +12,7 @@ import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
 
 export const metadata: Metadata = {
   title: "Forgot Password",
-  description: "Reset your Sitara By Abida account password.",
+  description: "Reset your Euphoria account password.",
 };
 
 export default function ForgotPasswordPage() {
@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
         {/* Header */}
         <div className="text-center space-y-2">
           <Link href="/" className="inline-block text-2xl font-extrabold tracking-wide uppercase text-[#0a0a0a] font-heading">
-            Sitara By Abida
+            Euphoria
           </Link>
           <h1 className="text-xl font-semibold">Reset your password</h1>
           <p className="text-sm text-muted-foreground">

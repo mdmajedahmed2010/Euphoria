@@ -17,7 +17,7 @@ import { TestimonialsCarousel, type Testimonial } from "@/components/home/testim
 import { EditorialSection } from "@/components/home/editorial-section";
 import { ASSETS } from "@/lib/demo-data";
 
-/* ──────────────── Static Data — Sitara By Abida ──────────────── */
+/* ──────────────── Static Data — Euphoria ──────────────── */
 
 // Hero slides featuring local brand images
 const heroSlides: HeroSlide[] = [

@@ -1,5 +1,5 @@
 /**
- * Sitara By Abida — Checkout Layout
+ * Euphoria — Checkout Layout
  * Isolated layout for focused checkout flow
  */
 
@@ -20,7 +20,7 @@ export default function CheckoutLayout({ children }: { children: React.ReactNode
             Back to Cart
           </Link>
           <Link href="/" className="text-xl md:text-2xl font-bold tracking-tight text-[#0a0a0a] font-heading">
-            Sitara By Abida
+            Euphoria
           </Link>
           <div className="w-24" /> {/* Spacer for centering */}
         </div>
@@ -33,7 +33,7 @@ export default function CheckoutLayout({ children }: { children: React.ReactNode
       <footer className="border-t border-[#d4af37]/30 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-xs text-muted-foreground font-medium">
           <p>
-            © {new Date().getFullYear()} Sitara By Abida. Secure checkout.{" "}
+            © {new Date().getFullYear()} Euphoria. Secure checkout.{" "}
             <Link href="/terms" className="underline hover:text-[#0a0a0a]">
               Terms
             </Link>{" "}
